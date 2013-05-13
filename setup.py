@@ -28,19 +28,14 @@ for package in core_packages:
     package_path = package.replace('.', '/')
     core_package_data[package] = filter(not_py, findall(package_path))
 
-download_url = 'https://github.com/johnsensible/django-publish/archive/v%s.zip#egg=django-publish-%s' % (
-    version, version
-)
-
 setup(
-    name='django-publish',
+    name='django-app-bootstrap',
     version=version,
-    description='Handy mixin/abstract class for providing a "publisher workflow" to arbitrary Django models.',
+    description='simple django app with test and coverage',
     long_description=open('README.rst').read(),
-    author='John Montgomery',
-    author_email='john@sensibledevelopment.com',
-    url='http://github.com/johnsensible/django-publish',
-    download_url=download_url,
+    author='Marcos Daniel Petry',
+    author_email='marcospetry@gmail.com',
+    url='https://github.com/petry/django-app-bootstrap',
     license='BSD',
     packages=core_packages,
     package_data=core_package_data,
