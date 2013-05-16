@@ -5,3 +5,4 @@ local_settings.py
 .idea
 test.db
 .coverage
+django_press.egg-info

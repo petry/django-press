@@ -1,7 +1,7 @@
 import re
 from setuptools import setup, find_packages, findall
 
-version = __import__('publish').__version__
+version = __import__('press').__version__
 
 
 def parse_requirements(file_name):
@@ -29,13 +29,13 @@ for package in core_packages:
     core_package_data[package] = filter(not_py, findall(package_path))
 
 setup(
-    name='django-app-bootstrap',
+    name='django-press',
     version=version,
-    description='simple django app with test and coverage',
+    description='',
     long_description=open('README.rst').read(),
     author='Marcos Daniel Petry',
     author_email='marcospetry@gmail.com',
-    url='https://github.com/petry/django-app-bootstrap',
+    url='https://github.com/petry/django-press',
     license='BSD',
     packages=core_packages,
     package_data=core_package_data,
