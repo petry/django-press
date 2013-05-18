@@ -17,7 +17,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.messages',
-    'myapp',
+    'press',
     'django_nose',
 
 )

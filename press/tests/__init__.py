@@ -1,5 +1,5 @@
 from django.conf import settings
-from myapp.tests import settings_for_test
+from press.tests import settings_for_test
 
 settings.configure(settings_for_test)
 
