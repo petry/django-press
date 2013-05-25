@@ -39,4 +39,3 @@ MIDDLEWARE_CLASSES = (
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 logging.disable(logging.CRITICAL)
-logging.disable(logging.DEBUG)
