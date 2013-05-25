@@ -1,2 +1,3 @@
 Django==1.5.1
--e git+git@github.com:petry/django-publish.git@0f250bdcc14639ee168bcfa27dfbb98645610e28#egg=django_publish-dev
+South==0.7.6
+-e git+git@github.com:petry/django-publish.git@0f250bdcc14639ee168bcfa27dfbb98645610e28#egg=django-publish

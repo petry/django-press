@@ -19,6 +19,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'press',
     'django_nose',
+    'south'
 
 )
 
@@ -38,3 +39,4 @@ MIDDLEWARE_CLASSES = (
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 logging.disable(logging.CRITICAL)
+logging.disable(logging.DEBUG)

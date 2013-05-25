@@ -10,5 +10,13 @@ deps:
 
 setup: deps
 
-test: clean deps
-	@nosetests -s -v --with-coverage --cover-package=publish
+
+test_functional: clean
+	@echo "running functional tests..."
+	@cd examplesite && python manage.py test
+
+test_unit: clean
+	@echo "running unit tests..."
+	@nosetests -s  --with-coverage --cover-package=press
+
+test: deps test_unit test_functional
