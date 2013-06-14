@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from publish.models import Publishable
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse as reverse_url
 
 
 class Article(Publishable):
@@ -17,3 +18,6 @@ class Article(Publishable):
 
     def __unicode__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse_url('press-article-detail', args=[self.slug])

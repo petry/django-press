@@ -5,6 +5,7 @@ from press.models import Article
 
 
 class ArticleAdmin(PublishableAdmin):
-    pass
+    prepopulated_fields = {"slug": ("title",)}
+
 
 admin.site.register(Article, ArticleAdmin)

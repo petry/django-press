@@ -1,7 +1,8 @@
-from django.conf.urls import patterns
+from django.conf.urls import patterns, url
+from press.views import ArticleView
 
 
 urlpatterns = patterns(
     '',
-    # url(r'^$', 'donnatunne.views.home', name='home'),
+    url(r'^(?P<slug>[-_\w]+).html$', ArticleView.as_view(), name="press-article-detail"),
 )

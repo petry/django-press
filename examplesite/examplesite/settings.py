@@ -82,6 +82,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'publish',
     'press',
+
+    'django_nose',
+    'south',
 )
 
 LOGGING = {
