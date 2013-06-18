@@ -13,3 +13,8 @@ setup: deps
 test: clean
 	@echo "running tests..."
 	@cd examplesite && python manage.py test
+
+run: clean
+	@cd examplesite && python manage.py syncdb
+	@cd examplesite && python manage.py migrate
+	@cd examplesite && python manage.py runserver

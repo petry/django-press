@@ -20,4 +20,6 @@ class Article(Publishable):
         return self.title
 
     def get_absolute_url(self):
-        return reverse_url('press-article-detail', args=[self.slug])
+        if self.is_public:
+            return reverse_url('press-article-published', args=[self.slug])
+        return reverse_url('press-article-draft', args=[self.slug])

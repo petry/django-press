@@ -80,9 +80,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'publish',
     'press',
-
+    'publish',
     'django_nose',
     'south',
 )

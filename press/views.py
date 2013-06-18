@@ -3,4 +3,12 @@ from press.models import Article
 
 
 class ArticleView(DetailView):
-    queryset = Article.objects.all()
+
+    def get_queryset(self):
+        queryset_by_type = {
+            'draft': Article.Q_DRAFT,
+            'published': Article.Q_PUBLISHED
+        }
+        return Article.objects.filter(queryset_by_type[self.kwargs['type']])
+
+

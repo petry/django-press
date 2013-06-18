@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 from press.models import Article
 from model_mommy import mommy
@@ -28,3 +29,18 @@ class ArticleModelTestCase(TestCase):
     def test_should_output_title_on_model(self):
         article = mommy.make(Article, title='some title')
         self.assertEqual(str(article), article.title)
+
+class SavedArticle(TestCase):
+    def setUp(self):
+        self.article = mommy.make(Article, title='some title')
+
+    def test_should_have_preview_url_when_article_is_saved(self):
+        article_url = reverse('press-article-draft', kwargs={'slug':self.article.slug})
+        self.assertEqual(self.article.get_absolute_url(), article_url)
+
+    def test_should_have_published_url_when_article_is_saved(self):
+        article_url = reverse('press-article-published', kwargs={'slug':self.article.slug})
+        self.article.publish()
+        published_article = Article.objects.get(Article.Q_PUBLISHED, slug=self.article.slug)
+        self.assertEqual(published_article.get_absolute_url(), article_url)
+
