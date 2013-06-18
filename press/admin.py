@@ -1,7 +1,7 @@
 from django.contrib import admin
 from publish.admin import PublishableAdmin
 
-from press.models import Article
+from press.models import Article, Author
 
 
 class ArticleAdmin(PublishableAdmin):
@@ -13,4 +13,5 @@ class ArticleAdmin(PublishableAdmin):
         super(ArticleAdmin, self).save_model(request, obj, form, change)
 
 
+admin.site.register(Author)
 admin.site.register(Article, ArticleAdmin)

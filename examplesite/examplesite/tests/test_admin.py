@@ -2,7 +2,7 @@
 from django.test import TestCase, RequestFactory
 from django.contrib import admin as django_admin
 from publish.admin import PublishableAdmin
-from press.models import Article
+from press.models import Article, Author
 
 
 class AdminArticleTest(TestCase):
@@ -16,3 +16,6 @@ class AdminArticleTest(TestCase):
         adminClass = django_admin.site._registry[Article]
         self.assertTrue(isinstance(adminClass, PublishableAdmin))
 
+class AdminAuthorTest(TestCase):
+    def test_author_model_should_be_registered_within_the_admin(self):
+        self.assertIn(Author, django_admin.site._registry)
