@@ -7,6 +7,10 @@
     <h1>{{object.title}}</h1>
     <h2>{{object.subtitle}}</h2>
 
+    <p>created at {{ object.created_date|date:"d/m/y h:i:s" }}</p>
+    <p>modified at {{ object.modified_date|date:"d/m/y h:i:s" }}</p>
+    <hr>
+
     <p>
         {{object.body}}
     </p>
