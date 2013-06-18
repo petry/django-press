@@ -5,7 +5,6 @@ from publish.models import Publishable
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse as reverse_url
 
-
 class Article(Publishable):
     title = models.CharField(_('title'), max_length=200)
     slug = models.CharField(_('slug'), max_length=100, db_index=True)
@@ -13,7 +12,7 @@ class Article(Publishable):
     body = models.TextField(_('body'))
     created_date = models.DateTimeField(auto_now_add=True, editable=False, default=timezone.now())
     modified_date = models.DateTimeField(auto_now=True, editable=False, default=timezone.now())
-    author = models.ForeignKey(User)
+    user = models.ForeignKey(User, editable=False)
 
     class Meta(Publishable.Meta):
         ordering = ["created_date"]

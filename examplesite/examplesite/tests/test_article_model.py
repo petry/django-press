@@ -28,8 +28,8 @@ class ArticleModelTestCase(TestCase):
     def test_should_have_modified_date(self):
         self.assert_field_in('modified_date', Article)
 
-    def test_should_have_author(self):
-        self.assert_field_in('author', Article)
+    def test_should_have_user(self):
+        self.assert_field_in('user', Article)
 
     def test_should_output_title_on_model(self):
         article = mommy.make(Article, title='some title')
