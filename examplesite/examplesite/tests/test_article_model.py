@@ -28,6 +28,9 @@ class ArticleModelTestCase(TestCase):
     def test_should_have_modified_date(self):
         self.assert_field_in('modified_date', Article)
 
+    def test_should_have_section(self):
+        self.assert_field_in('section', Article)
+
     def test_should_have_user(self):
         self.assert_field_in('user', Article)
 
