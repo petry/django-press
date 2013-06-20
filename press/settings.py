@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 
-PRESS_DEFAULT_WIDGET = getattr(settings, "PRESS_DEFAULT_WIDGET", 'django.forms.Textarea')
+PRESS_DEFAULT_WIDGET = getattr(settings, "PRESS_DEFAULT_WIDGET",
+                               'django.forms.Textarea')
 
 PRESS_BLEACH_ALLOWED_TAGS = getattr(settings, "PRESS_BLEACH_ALLOWED_TAGS", [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
@@ -13,21 +14,25 @@ PRESS_BLEACH_ALLOWED_TAGS = getattr(settings, "PRESS_BLEACH_ALLOWED_TAGS", [
     'img','h1'
 ])
 
-PRESS_BLEACH_ALLOWED_ATTRIBUTES = getattr(settings, "PRESS_BLEACH_ALLOWED_ATTRIBUTES", {
+PRESS_BLEACH_ALLOWED_ATTRIBUTES = getattr(settings,
+                                          "PRESS_BLEACH_ALLOWED_ATTRIBUTES", {
     'a': [
         'href', 'target',
         'class', 'id', 'name', 'style', 'title',
     ],
-    'p':[
+    'p': [
         'style'
     ],
     'img': [
         'src', 'width', 'height', 'alt', 'title', 'id', 'style'
     ],
     'table': [
-        'border', 'cellpadding', 'cellspacing', 'style', 'summary', 'width', 'height', 'align'
+        'border', 'cellpadding', 'cellspacing', 'style', 'summary', 'width',
+        'height', 'align'
     ]
 })
-PRESS_BLEACH_ALLOWED_STYLES = getattr(settings, "PRESS_BLEACH_ALLOWED_STYLES", [])
+PRESS_BLEACH_ALLOWED_STYLES = getattr(settings, "PRESS_BLEACH_ALLOWED_STYLES",
+    [])
 PRESS_BLEACH_STRIP_TAGS = getattr(settings, "PRESS_BLEACH_STRIP_TAGS", True)
-PRESS_BLEACH_STRIP_COMMENTS = getattr(settings, "PRESS_BLEACH_STRIP_COMMENTS", True)
+PRESS_BLEACH_STRIP_COMMENTS = getattr(settings, "PRESS_BLEACH_STRIP_COMMENTS",
+                                      True)

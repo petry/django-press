@@ -132,8 +132,7 @@ CKEDITOR_CONFIGS = {
         'toolbar': [
             {'name': 'styles', 'items': [
                 'Format', '-', 'Bold', 'Italic', 'Underline', 'Strike', '-',
-                'RemoveFormat']
-            },
+                'RemoveFormat']},
             {'name': 'paragraph', 'items': [
                 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
                 'Blockquote', '-', 'SelectAll']},

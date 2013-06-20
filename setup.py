@@ -51,7 +51,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     install_requires=parse_requirements('requirements.txt'),
-    dependency_links = [
+    dependency_links=[
         'https://github.com/petry/django-publish/tarball/master#egg=django-publish-0.3.9',
     ]
 )

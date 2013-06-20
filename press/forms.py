@@ -3,9 +3,10 @@
 from django.forms import ModelForm
 from django_bleach.forms import BleachField, load_widget
 from press.models import Article
-from press.settings import PRESS_BLEACH_ALLOWED_TAGS, PRESS_BLEACH_ALLOWED_ATTRIBUTES, \
-    PRESS_BLEACH_ALLOWED_STYLES, PRESS_BLEACH_STRIP_TAGS, PRESS_BLEACH_STRIP_COMMENTS, \
-    PRESS_DEFAULT_WIDGET
+from press.settings import PRESS_BLEACH_ALLOWED_TAGS, \
+    PRESS_BLEACH_ALLOWED_ATTRIBUTES, \
+    PRESS_BLEACH_ALLOWED_STYLES, PRESS_BLEACH_STRIP_TAGS, \
+    PRESS_BLEACH_STRIP_COMMENTS, PRESS_DEFAULT_WIDGET
 
 
 class ArticleAdminForm(ModelForm):

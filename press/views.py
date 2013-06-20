@@ -10,5 +10,3 @@ class ArticleView(DetailView):
             'published': Article.Q_PUBLISHED
         }
         return Article.objects.filter(queryset_by_type[self.kwargs['type']])
-
-

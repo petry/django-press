@@ -44,32 +44,38 @@ class SavedArticle(TestCase):
         self.article = mommy.make(Article, title='some title')
 
     def test_should_have_preview_url_when_article_is_saved(self):
-        article_url = reverse('press-article-draft', kwargs={'slug': self.article.slug})
+        article_url = reverse('press-article-draft',
+                              kwargs={'slug': self.article.slug})
         self.assertEqual(self.article.get_absolute_url(), article_url)
 
     def test_should_have_published_url_when_article_is_saved(self):
-        article_url = reverse('press-article-published', kwargs={'slug': self.article.slug})
+        article_url = reverse('press-article-published',
+                              kwargs={'slug': self.article.slug})
         self.article.publish()
-        published_article = Article.objects.get(Article.Q_PUBLISHED, slug=self.article.slug)
+        published_article = Article.objects.get(Article.Q_PUBLISHED,
+                                                slug=self.article.slug)
         self.assertEqual(published_article.get_absolute_url(), article_url)
 
-    def test_created_and_modified_date_should_have_the_same_value_whe_it_publish_for_the_first_time(self):
+    def test_should_have_the_same_value_when_it_first_publish(self):
         time.sleep(2)
         self.article.save()
         self.article.publish()
-        published_article = Article.objects.get(Article.Q_PUBLISHED, slug=self.article.slug)
+        published_article = Article.objects.get(Article.Q_PUBLISHED,
+                                                slug=self.article.slug)
         self.assertEqual(
             datetime.strftime(published_article.created_date, "%H:%M:%S"),
             datetime.strftime(published_article.modified_date, "%H:%M:%S")
         )
 
-    def test_created_and_modified_date_should_be_differente_when_it_publish_for_second_time(self):
+    def test_should_be_differente_when_it_publish_for_second_time(self):
         self.article.publish()
-        draft_article = Article.objects.get(Article.Q_DRAFT, slug=self.article.slug)
+        draft_article = Article.objects.get(Article.Q_DRAFT,
+                                            slug=self.article.slug)
         time.sleep(2)
         draft_article.save()
         draft_article.publish()
-        published_article_again = Article.objects.get(Article.Q_PUBLISHED, slug=self.article.slug)
+        published_article_again = Article.objects.get(Article.Q_PUBLISHED,
+                                                      slug=self.article.slug)
         self.assertGreater(
             published_article_again.modified_date,
             published_article_again.created_date
