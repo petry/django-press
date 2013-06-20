@@ -27,7 +27,6 @@ core_package_data = {}
 for package in core_packages:
     package_path = package.replace('.', '/')
     core_package_data[package] = filter(not_py, findall(package_path))
-
 setup(
     name='django-press',
     version=version,
@@ -52,5 +51,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     install_requires=parse_requirements('requirements.txt'),
-    setup_requires=parse_requirements('requirements_test.txt')
+    dependency_links = [
+        'https://github.com/petry/django-publish/tarball/master#egg=django-publish-0.3.9',
+    ]
 )

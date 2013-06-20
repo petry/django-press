@@ -1,3 +1,4 @@
 Django==1.5.1
 South==0.7.6
--e git+git://github.com/petry/django-publish.git@master#egg=django-publish
+django-bleach==0.1.4
+django-publish==0.3.9
