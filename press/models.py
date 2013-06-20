@@ -5,7 +5,6 @@ from publish.models import Publishable
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse as reverse_url
 
-
 class Section(models.Model):
     name = models.CharField(_('name'), max_length=200)
 

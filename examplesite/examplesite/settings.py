@@ -81,6 +81,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'press',
+    'django_bleach',
     'publish',
     'django_nose',
     'south',

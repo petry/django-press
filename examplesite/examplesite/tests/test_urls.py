@@ -3,7 +3,6 @@
 from django.http import Http404
 from django.test import TestCase, RequestFactory
 from model_mommy import mommy
-
 from press.models import Article
 from press.views import ArticleView
 
@@ -42,4 +41,3 @@ class PublishedArticle(TestCase):
     def test_should_use_article_template(self):
         response = self.view(self.request, slug=self.article.slug, type='published')
         self.assertTemplateUsed(response, 'press/article_detail.html')
-

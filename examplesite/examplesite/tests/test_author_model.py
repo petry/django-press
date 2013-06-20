@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from model_mommy import mommy
-
 from press.models import Author
 
 
@@ -11,7 +10,6 @@ class AuthorModelTestCase(TestCase):
 
     def test_should_have_about(self):
         self.assert_field_in('about', Author)
-
 
     def test_should_have_user(self):
         self.assert_field_in('user', Author)

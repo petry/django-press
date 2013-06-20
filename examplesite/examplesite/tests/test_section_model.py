@@ -1,7 +1,5 @@
-from django.contrib.auth.models import User
 from django.test import TestCase
 from model_mommy import mommy
-
 from press.models import Section
 
 
@@ -11,7 +9,6 @@ class SectionModelTestCase(TestCase):
 
     def test_should_have_name(self):
         self.assert_field_in('name', Section)
-
 
     def test_should_output_user_name_on_model(self):
         section = mommy.make(Section)
