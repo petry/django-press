@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-import datetime
 from south.db import db
 from south.v2 import SchemaMigration
-from django.db import models
 
 
 class Migration(SchemaMigration):
@@ -37,7 +35,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'press', ['Article'])
 
-
     def backwards(self, orm):
         # Deleting model 'Article'
         db.delete_table(u'press_article')
@@ -56,7 +53,8 @@ class Migration(SchemaMigration):
         },
         u'auth.permission': {
             'Meta': {
-            'ordering': "(u'content_type__app_label', u'content_type__model', u'codename')",
+            'ordering': "(u'content_type__app_label', u'content_type__model',"
+                        " u'codename')",
             'unique_together': "((u'content_type', u'codename'),)",
             'object_name': 'Permission'},
             'codename': (
