@@ -72,6 +72,7 @@ ROOT_URLCONF = 'examplesite.urls'
 WSGI_APPLICATION = 'examplesite.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(LOCAL_FILE, "templates")
 )
 
 INSTALLED_APPS = (
