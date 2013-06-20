@@ -36,3 +36,4 @@ PRESS_BLEACH_ALLOWED_STYLES = getattr(settings,
 PRESS_BLEACH_STRIP_TAGS = getattr(settings, "PRESS_BLEACH_STRIP_TAGS", True)
 PRESS_BLEACH_STRIP_COMMENTS = getattr(settings, "PRESS_BLEACH_STRIP_COMMENTS",
                                       True)
+
