@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.conf import settings
+
+PRESS_DEFAULT_WIDGET = getattr(settings, "PRESS_DEFAULT_WIDGET", 'django.forms.Textarea')
+
 PRESS_BLEACH_ALLOWED_TAGS = getattr(settings, "PRESS_BLEACH_ALLOWED_TAGS", [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
     'p', 'ul', 'ol', 'li',

@@ -1,6 +1,8 @@
 # Django settings for examplesite project.
 import logging
+import os
 
+LOCAL_FILE = os.path.dirname(os.path.abspath(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -81,8 +83,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'press',
-    'django_bleach',
     'publish',
+    'ckeditor',
     'django_nose',
     'south',
 )
@@ -118,3 +120,19 @@ INSTALLED_APPS = INSTALLED_APPS + (
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 logging.disable(logging.CRITICAL)
+
+PRESS_DEFAULT_WIDGET = 'ckeditor.widgets.CKEditorWidget'
+CKEDITOR_UPLOAD_PATH = os.path.join(LOCAL_FILE, "ckupload")
+CKEDITOR_CONFIGS = {
+    'default': {
+        'forcePasteAsPlainText': True,
+        'pasteFromWordPromptCleanup': False,
+        'uiColor': '#ffffff',
+        'toolbar': [
+            {'name': 'styles', 'items': [ 'Format', '-', 'Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat']},
+            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'SelectAll']},
+            {'name': 'insert', 'items': ['Table', 'HorizontalRule', '-', 'Link', 'Unlink']}
+        ]
+    },
+}
+
