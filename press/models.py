@@ -5,6 +5,7 @@ from publish.models import Publishable
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse as reverse_url
 
+
 class Section(models.Model):
     name = models.CharField(_('name'), max_length=200)
 
@@ -28,8 +29,12 @@ class Article(Publishable):
     slug = models.CharField(_('slug'), max_length=100, db_index=True)
     subtitle = models.CharField(_('subtitle'), max_length=500, blank=True)
     body = models.TextField(_('body'))
-    created_date = models.DateTimeField(_('created date'), auto_now_add=True, editable=False, default=timezone.now())
-    modified_date = models.DateTimeField(_('modified date'), auto_now=True, editable=False, default=timezone.now())
+    created_date = models.DateTimeField(_('created date'), auto_now_add=True,
+                                        editable=False,
+                                        default=timezone.now())
+    modified_date = models.DateTimeField(_('modified date'), auto_now=True,
+                                         editable=False,
+                                         default=timezone.now())
     user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
     section = models.ForeignKey(Section)
     author = models.ForeignKey(Author, blank=True, null=True)

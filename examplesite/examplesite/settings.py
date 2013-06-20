@@ -129,10 +129,16 @@ CKEDITOR_CONFIGS = {
         'pasteFromWordPromptCleanup': False,
         'uiColor': '#ffffff',
         'toolbar': [
-            {'name': 'styles', 'items': [ 'Format', '-', 'Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat']},
-            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'SelectAll']},
-            {'name': 'insert', 'items': ['Table', 'HorizontalRule', '-', 'Link', 'Unlink']}
+            {'name': 'styles', 'items': [
+                'Format', '-', 'Bold', 'Italic', 'Underline', 'Strike', '-',
+                'RemoveFormat']
+            },
+            {'name': 'paragraph', 'items': [
+                'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
+                'Blockquote', '-', 'SelectAll']},
+            {'name': 'insert', 'items': [
+                'Table', 'HorizontalRule', '-', 'Link', 'Unlink'
+            ]}
         ]
     },
 }
-

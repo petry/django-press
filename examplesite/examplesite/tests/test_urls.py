@@ -15,14 +15,17 @@ class SavedArticle(TestCase):
         self.article = mommy.make(Article, title='some title')
 
     def test_should_have_draft_url_when_article_is_saved(self):
-        response = self.view(self.request, slug=self.article.slug, type='draft')
+        response = self.view(self.request,
+                             slug=self.article.slug, type='draft')
         self.assertEqual(response.status_code, 200)
 
     def test_should_not_have_published_url_when_article_is_saved(self):
-        self.assertRaises(Http404, self.view, self.request, slug=self.article.slug, type='published')
+        self.assertRaises(Http404, self.view, self.request,
+                          slug=self.article.slug, type='published')
 
     def test_should_use_article_template(self):
-        response = self.view(self.request, slug=self.article.slug, type='draft')
+        response = self.view(self.request, slug=self.article.slug,
+                             type='draft')
         self.assertTemplateUsed(response, 'press/article_detail.html')
 
 
@@ -35,9 +38,11 @@ class PublishedArticle(TestCase):
         self.article.publish()
 
     def test_should_have_draft_url_when_article_is_saved(self):
-        response = self.view(self.request, slug=self.article.slug, type='published')
+        response = self.view(self.request, slug=self.article.slug,
+                             type='published')
         self.assertEqual(response.status_code, 200)
 
     def test_should_use_article_template(self):
-        response = self.view(self.request, slug=self.article.slug, type='published')
+        response = self.view(self.request, slug=self.article.slug,
+                             type='published')
         self.assertTemplateUsed(response, 'press/article_detail.html')
