@@ -14,11 +14,11 @@ PRESS_BLEACH_ALLOWED_TAGS = getattr(settings, "PRESS_BLEACH_ALLOWED_TAGS", [
     'img', 'h1'
 ])
 
-PRESS_BLEACH_ALLOWED_ATTRIBUTES = getattr(settings,
-                                          "PRESS_BLEACH_ALLOWED_ATTRIBUTES", {
+PRESS_BLEACH_ALLOWED_ATTRIBUTES = getattr(
+    settings, "PRESS_BLEACH_ALLOWED_ATTRIBUTES",
+    {
         'a': [
-            'href', 'target',
-            'class', 'id', 'name', 'style', 'title',
+            'href', 'target', 'class', 'id', 'name', 'style', 'title',
         ],
         'p': [
             'style'
@@ -36,4 +36,3 @@ PRESS_BLEACH_ALLOWED_STYLES = getattr(settings,
 PRESS_BLEACH_STRIP_TAGS = getattr(settings, "PRESS_BLEACH_STRIP_TAGS", True)
 PRESS_BLEACH_STRIP_COMMENTS = getattr(settings, "PRESS_BLEACH_STRIP_COMMENTS",
                                       True)
-

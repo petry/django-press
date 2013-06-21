@@ -23,7 +23,6 @@ class Migration(SchemaMigration):
                           auto_now=True, blank=True),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Adding field 'Article.crated_date'
         db.add_column(u'press_article', 'crated_date',
@@ -39,7 +38,6 @@ class Migration(SchemaMigration):
         # Deleting field 'Article.modified_date'
         db.delete_column(u'press_article', 'modified_date')
 
-
     models = {
         u'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -53,18 +51,21 @@ class Migration(SchemaMigration):
         },
         u'auth.permission': {
             'Meta': {
-            'ordering': "(u'content_type__app_label', u'content_type__model', u'codename')",
-            'unique_together': "((u'content_type', u'codename'),)",
-            'object_name': 'Permission'},
+                'ordering': "(u'content_type__app_label', "
+                            "u'content_type__model', u'codename')",
+                'unique_together': "((u'content_type', u'codename'),)",
+                'object_name': 'Permission'},
             'codename': (
-            'django.db.models.fields.CharField', [], {'max_length': '100'}),
+                'django.db.models.fields.CharField', [],
+                {'max_length': '100'}),
             'content_type': (
                 'django.db.models.fields.related.ForeignKey', [],
                 {'to': u"orm['contenttypes.ContentType']"}),
             u'id': (
-            'django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+                'django.db.models.fields.AutoField', [],
+                {'primary_key': 'True'}),
             'name': (
-            'django.db.models.fields.CharField', [], {'max_length': '50'})
+                'django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         u'auth.user': {
             'Meta': {'object_name': 'User'},
@@ -117,29 +118,35 @@ class Migration(SchemaMigration):
             'author': ('django.db.models.fields.related.ForeignKey', [],
                        {'to': u"orm['auth.User']"}),
             'body': ('django.db.models.fields.TextField', [], {}),
-            'created_date': ('django.db.models.fields.DateTimeField', [],
-                             {'default': 'datetime.datetime(2013, 6, 17, 0, 0)',
-                              'auto_now_add': 'True',
-                              'blank': 'True'}),
+            'created_date': (
+                'django.db.models.fields.DateTimeField', [],
+                {
+                    'default': 'datetime.datetime(2013, 6, 17, 0, 0)',
+                    'auto_now_add': 'True',
+                    'blank': 'True'}),
             u'id': (
-            'django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+                'django.db.models.fields.AutoField', [],
+                {'primary_key': 'True'}),
             'is_public': ('django.db.models.fields.BooleanField', [],
                           {'default': 'False', 'db_index': 'True'}),
-            'modified_date': ('django.db.models.fields.DateTimeField', [],
-                              {
-                              'default': 'datetime.datetime(2013, 6, 17, 0, 0)',
-                              'auto_now': 'True', 'blank': 'True'}),
-            'public': ('django.db.models.fields.related.OneToOneField', [],
-                       {'related_name': "'draft'", 'unique': 'True',
-                        'null': 'True', 'to': u"orm['press.Article']"}),
+            'modified_date': (
+                'django.db.models.fields.DateTimeField', [],
+                {'default': 'datetime.datetime(2013, 6, 17, 0, 0)',
+                 'auto_now': 'True', 'blank': 'True'}),
+            'public': (
+                'django.db.models.fields.related.OneToOneField', [],
+                {
+                    'related_name': "'draft'", 'unique': 'True',
+                    'null': 'True', 'to': u"orm['press.Article']"}),
             'publish_state': ('django.db.models.fields.IntegerField', [],
-                              {'default': '0', 'db_index': 'True'}),
+                              {
+                                  'default': '0', 'db_index': 'True'}),
             'slug': ('django.db.models.fields.CharField', [],
                      {'max_length': '100', 'db_index': 'True'}),
             'subtitle': ('django.db.models.fields.CharField', [],
                          {'max_length': '500', 'blank': 'True'}),
             'title': (
-            'django.db.models.fields.CharField', [], {'max_length': '200'})
+                'django.db.models.fields.CharField', [], {'max_length': '200'})
         }
     }
 

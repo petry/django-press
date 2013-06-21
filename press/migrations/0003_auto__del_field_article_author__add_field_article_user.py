@@ -14,7 +14,6 @@ class Migration(SchemaMigration):
                           default=0, to=orm['auth.User']),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Adding field 'Article.author'
         db.add_column(u'press_article', 'author',
@@ -24,7 +23,6 @@ class Migration(SchemaMigration):
 
         # Deleting field 'Article.user'
         db.delete_column(u'press_article', 'user_id')
-
 
     models = {
         u'auth.group': {
@@ -40,7 +38,8 @@ class Migration(SchemaMigration):
         },
         u'auth.permission': {
             'Meta': {
-            'ordering': "(u'content_type__app_label', u'content_type__model', u'codename')",
+            'ordering': "(u'content_type__app_label', "
+                        "u'content_type__model', u'codename')",
             'unique_together': "((u'content_type', u'codename'),)",
             'object_name': 'Permission'},
             'codename': (
@@ -101,9 +100,9 @@ class Migration(SchemaMigration):
         u'press.article': {
             'Meta': {'ordering': "['created_date']", 'object_name': 'Article'},
             'body': ('django.db.models.fields.TextField', [], {}),
-            'created_date': ('django.db.models.fields.DateTimeField', [],
-                             {'default': 'datetime.datetime(2013, 6, 18, 0, 0)',
-                              'auto_now_add': 'True', 'blank': 'True'}),
+            'created_date': ('django.db.models.fields.DateTimeField', [], {
+                'default': 'datetime.datetime(2013, 6, 18, 0, 0)',
+                'auto_now_add': 'True', 'blank': 'True'}),
             u'id': (
             'django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'is_public': ('django.db.models.fields.BooleanField', [],

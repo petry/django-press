@@ -21,14 +21,12 @@ class Migration(SchemaMigration):
                           to=orm['press.Author'], null=True, blank=True),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Deleting model 'Author'
         db.delete_table(u'press_author')
 
         # Deleting field 'Article.author'
         db.delete_column(u'press_article', 'author_id')
-
 
     models = {
         u'auth.group': {
@@ -44,7 +42,8 @@ class Migration(SchemaMigration):
         },
         u'auth.permission': {
             'Meta': {
-            'ordering': "(u'content_type__app_label', u'content_type__model', u'codename')",
+            'ordering': "(u'content_type__app_label', "
+                        "u'content_type__model', u'codename')",
             'unique_together': "((u'content_type', u'codename'),)",
             'object_name': 'Permission'},
             'codename': (
@@ -103,14 +102,15 @@ class Migration(SchemaMigration):
             'django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         u'press.article': {
-            'Meta': {'ordering': "['modified_date']", 'object_name': 'Article'},
+            'Meta': {
+                'ordering': "['modified_date']", 'object_name': 'Article'},
             'author': ('django.db.models.fields.related.ForeignKey', [],
                        {'to': u"orm['press.Author']", 'null': 'True',
                         'blank': 'True'}),
             'body': ('django.db.models.fields.TextField', [], {}),
-            'created_date': ('django.db.models.fields.DateTimeField', [],
-                             {'default': 'datetime.datetime(2013, 6, 18, 0, 0)',
-                              'auto_now_add': 'True', 'blank': 'True'}),
+            'created_date': ('django.db.models.fields.DateTimeField', [], {
+                'default': 'datetime.datetime(2013, 6, 18, 0, 0)',
+                'auto_now_add': 'True', 'blank': 'True'}),
             u'id': (
             'django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'is_public': ('django.db.models.fields.BooleanField', [],
