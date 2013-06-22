@@ -146,7 +146,5 @@ CKEDITOR_CONFIGS = {
 NOSE_ARGS = [
     '--nocapture',
     '--nologcapture',
-    # '--rednose',
     '--verbosity', '2',
-    '--cover-package', 'press',
 ]

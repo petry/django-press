@@ -1,2 +1,5 @@
-[report]
-omit = press/migrations*
+[run]
+omit =
+    press/migrations*
+include =
+    press/*
