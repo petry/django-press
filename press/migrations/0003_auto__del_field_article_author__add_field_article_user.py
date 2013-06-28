@@ -11,14 +11,14 @@ class Migration(SchemaMigration):
         # Adding field 'Article.user'
         db.add_column(u'press_article', 'user',
                       self.gf('django.db.models.fields.related.ForeignKey')(
-                          default=0, to=orm['auth.User']),
+                          default=1, to=orm['auth.User']),
                       keep_default=False)
 
     def backwards(self, orm):
         # Adding field 'Article.author'
         db.add_column(u'press_article', 'author',
                       self.gf('django.db.models.fields.related.ForeignKey')(
-                          default=0, to=orm['auth.User']),
+                          default=1, to=orm['auth.User']),
                       keep_default=False)
 
         # Deleting field 'Article.user'
