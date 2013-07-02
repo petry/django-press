@@ -11,6 +11,12 @@ class AuthorModelTestCase(TestCase):
     def test_should_have_about(self):
         self.assert_field_in('about', Author)
 
+    def test_should_have_position(self):
+        self.assert_field_in('position', Author)
+
+    def test_should_have_photo(self):
+        self.assert_field_in('photo', Author)
+
     def test_should_have_user(self):
         self.assert_field_in('user', Author)
 

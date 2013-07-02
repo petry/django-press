@@ -53,5 +53,6 @@ setup(
     install_requires=parse_requirements('requirements.txt'),
     dependency_links=[
         'https://github.com/petry/django-publish/tarball/master#egg=django-publish-0.3.9',
+        'https://github.com/petry/django-photologue/tarball/master#egg=django-photologue-2.7.dev0'
     ]
 )

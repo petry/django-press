@@ -2,3 +2,4 @@ Django==1.5.1
 South==0.7.6
 django-bleach==0.1.4
 django-publish==0.3.9
+django-photologue==2.7.dev0

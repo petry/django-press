@@ -24,7 +24,7 @@ PRESS_BLEACH_ALLOWED_ATTRIBUTES = getattr(
             'style'
         ],
         'img': [
-            'src', 'width', 'height', 'alt', 'title', 'id', 'style'
+            'src', 'width', 'height', 'alt', 'title', 'id', 'style', 'align',
         ],
         'table': [
             'border', 'cellpadding', 'cellspacing', 'style', 'summary',
