@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.admin.options import ModelAdmin
 from publish.admin import PublishableAdmin
 from press.forms import ArticleAdminForm
 
@@ -13,7 +14,10 @@ class ArticleAdmin(PublishableAdmin):
         obj.user = request.user
         super(ArticleAdmin, self).save_model(request, obj, form, change)
 
+class SectionAdmin(ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
+
 
 admin.site.register(Author)
-admin.site.register(Section)
+admin.site.register(Section, SectionAdmin)
 admin.site.register(Article, ArticleAdmin)

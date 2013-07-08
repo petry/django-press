@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse as reverse_url
 
 class Section(models.Model):
     name = models.CharField(_('name'), max_length=200)
+    slug = models.CharField(_('slug'), max_length=100, db_index=True)
 
     def __unicode__(self):
         return self.name
@@ -44,6 +45,7 @@ class Article(Publishable):
 
     class Meta(Publishable.Meta):
         ordering = ["modified_date"]
+
 
     def __unicode__(self):
         return self.title
