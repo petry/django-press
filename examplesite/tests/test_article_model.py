@@ -38,6 +38,12 @@ class ArticleModelTestCase(TestCase):
         article = mommy.make(Article, title='some title')
         self.assertEqual(str(article), article.title)
 
+    def test_should_be_ordered_by_decrescent_date(self):
+        fisrt = mommy.make(Article, title='first article')
+        time.sleep(2)
+        second = mommy.make(Article, title='second article')
+        self.assertEqual(Article.objects.all()[0], second)
+
 
 class SavedArticle(TestCase):
     def setUp(self):
@@ -48,7 +54,7 @@ class SavedArticle(TestCase):
                               kwargs={'slug': self.article.slug})
         self.assertEqual(self.article.get_absolute_url(), article_url)
 
-    def test_should_have_published_url_when_article_is_saved(self):
+    def test_should_have_published_url_when_article_is_published(self):
         article_url = reverse('press-article-published',
                               kwargs={'slug': self.article.slug})
         self.article.publish()

@@ -44,7 +44,7 @@ class Article(Publishable):
     author = models.ForeignKey(Author, blank=True, null=True)
 
     class Meta(Publishable.Meta):
-        ordering = ["modified_date"]
+        ordering = ["-modified_date"]
 
 
     def __unicode__(self):

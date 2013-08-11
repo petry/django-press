@@ -5,6 +5,10 @@ from press.models import Article
 
 class ArticleView(DetailView):
 
+
+    def get(self, request, *args, **kwargs):
+        return super(ArticleView, self).get(request, *args, **kwargs)
+
     def get_queryset(self):
         queryset_by_type = {
             'draft': Article.Q_DRAFT,
@@ -17,7 +21,6 @@ class SectionView(ListView):
     model = Article
 
     def get(self, request, *args, **kwargs):
-        import ipdb; ipdb.set_trace()
         return super(SectionView, self).get(request, *args, **kwargs)
 
     def get_queryset(self):
