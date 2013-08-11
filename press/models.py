@@ -16,7 +16,8 @@ class Section(models.Model):
 
 class Author(models.Model):
     user = models.ForeignKey(User, verbose_name=_('user'))
-    position = models.CharField(_('position'), max_length=100, null=True, blank=True)
+    position = models.CharField(_('position'), max_length=100, null=True,
+                                blank=True)
     about = models.TextField(_('about'), null=True, blank=True)
     photo = models.ForeignKey('photologue.Photo', verbose_name=_('photo'),
                               null=True, blank=True)
