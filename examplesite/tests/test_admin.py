@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.contrib import admin as django_admin
 from publish.admin import PublishableAdmin
 from press.forms import ArticleAdminForm
-from press.models import Article, Author, Section
+from press.models import Article, Section
 
 
 class AdminArticleTest(TestCase):
@@ -20,11 +20,6 @@ class AdminArticleTest(TestCase):
     def test_article_admin_must_have_admin_form(self):
         adminClass = django_admin.site._registry[Article]
         self.assertEqual(adminClass.form, ArticleAdminForm)
-
-
-class AdminAuthorTest(TestCase):
-    def test_author_model_should_be_registered_within_the_admin(self):
-        self.assertIn(Author, django_admin.site._registry)
 
 
 class AdminSectionTest(TestCase):

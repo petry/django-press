@@ -14,21 +14,6 @@ class Section(models.Model):
         return self.name
 
 
-class Author(models.Model):
-    user = models.ForeignKey(User, verbose_name=_('user'))
-    position = models.CharField(_('position'), max_length=100, null=True,
-                                blank=True)
-    about = models.TextField(_('about'), null=True, blank=True)
-    photo = models.ForeignKey('photologue.Photo', verbose_name=_('photo'),
-                              null=True, blank=True)
-
-    class Meta:
-        ordering = ["user__first_name", "user__last_name"]
-
-    def __unicode__(self):
-        return self.user.get_full_name()
-
-
 class Article(Publishable):
     title = models.CharField(_('title'), max_length=200)
     slug = models.CharField(_('slug'), max_length=100, db_index=True)
@@ -40,9 +25,16 @@ class Article(Publishable):
     modified_date = models.DateTimeField(_('modified date'), auto_now=True,
                                          editable=False,
                                          default=timezone.now())
-    user = models.ForeignKey(User, verbose_name=_('user'), editable=False)
     section = models.ForeignKey(Section)
-    author = models.ForeignKey(Author, blank=True, null=True)
+    user = models.ForeignKey(User,
+                             verbose_name=_('user'),
+                             editable=False,
+                             related_name='users'
+                             )
+    author = models.ForeignKey(User, blank=True, null=True,
+                               related_name='authors')
+
+
 
     class Meta(Publishable.Meta):
         ordering = ["-modified_date"]
