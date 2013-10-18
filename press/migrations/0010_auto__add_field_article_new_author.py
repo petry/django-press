@@ -66,7 +66,7 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
             'is_public': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'tags': ('photologue.models.TagField', [], {'max_length': '255', 'blank': 'True'}),
+            'tags': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '50'}),
             'title_slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '50'}),
             'view_count': ('django.db.models.fields.PositiveIntegerField', [], {'default': '0'})
