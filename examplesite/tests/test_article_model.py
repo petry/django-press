@@ -2,7 +2,7 @@ from datetime import datetime
 import time
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from press.models import Article
+from press.models import Article, ArticleSeo
 from model_mommy import mommy
 
 
@@ -47,7 +47,8 @@ class ArticleModelTestCase(TestCase):
 
 class SavedArticle(TestCase):
     def setUp(self):
-        self.article = mommy.make(Article, title='some title')
+        self.article = mommy.make(Article, title='some title',
+                                  subtitle='some subtitle')
 
     def test_should_have_preview_url_when_article_is_saved(self):
         article_url = reverse('press-article-draft',
@@ -72,6 +73,41 @@ class SavedArticle(TestCase):
             datetime.strftime(published_article.created_date, "%H:%M:%S"),
             datetime.strftime(published_article.modified_date, "%H:%M:%S")
         )
+
+    def test_should_get_description_from_article_models_when_not_have_seo_relation(self):
+        self.assertEqual(self.article.get_description(), self.article.subtitle)
+
+    def test_should_get_description_from_model_relation(self):
+        seo = mommy.make(ArticleSeo, article=self.article, description='meta description')
+        self.assertEqual(self.article.get_description(), seo.description)
+
+    def test_should_get_description_from_article_models_when_seo_is_blank(self):
+        seo = mommy.make(ArticleSeo, article=self.article)
+        self.assertEqual(self.article.get_description(), self.article.subtitle)
+
+    def test_should_not_return_keywords_when_not_have_seo_relation(self):
+        self.assertIsNone(self.article.get_keywords())
+
+    def test_should_get_keywords_from_model_relation(self):
+        seo = mommy.make(ArticleSeo, article=self.article, keywords='meta keywords')
+        self.assertEqual(self.article.get_keywords(), seo.keywords)
+
+    def test_should_not_return_keywords_when_seo_is_blank(self):
+        seo = mommy.make(ArticleSeo, article=self.article)
+        self.assertIsNone(self.article.get_keywords())
+
+    def test_should_duplicate_seo_atributes(self):
+        mommy.make(ArticleSeo, article=self.article, description='meta description')
+        self.article.publish()
+        draft_article = Article.objects.get(Article.Q_DRAFT,
+                                            slug=self.article.slug)
+        published_article = Article.objects.get(Article.Q_PUBLISHED,
+                                                 slug=self.article.slug)
+        self.assertEqual(draft_article.articleseo.description,
+                         published_article.articleseo.description)
+        self.assertGreater(published_article.articleseo.id,
+                           draft_article.articleseo.id)
+
 
     def test_should_be_differente_when_it_publish_for_second_time(self):
         self.article.publish()

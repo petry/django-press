@@ -34,10 +34,11 @@ class Article(Publishable):
     author = models.ForeignKey(User, blank=True, null=True,
                                related_name='authors')
 
-
-
     class Meta(Publishable.Meta):
         ordering = ["-modified_date"]
+
+    class PublishMeta(Publishable.PublishMeta):
+        publish_reverse_fields = ['articleseo',]
 
 
     def __unicode__(self):
@@ -47,3 +48,31 @@ class Article(Publishable):
         if self.is_public:
             return reverse_url('press-article-published', args=[self.slug])
         return reverse_url('press-article-draft', args=[self.slug])
+
+    def get_description(self):
+        try:
+            if self.articleseo.description:
+                return self.articleseo.description
+        except ArticleSeo.DoesNotExist:
+            pass
+        return self.subtitle
+
+    def get_keywords(self):
+        try:
+            if self.articleseo.keywords:
+                return self.articleseo.keywords
+        except ArticleSeo.DoesNotExist:
+            pass
+        return None
+
+
+class ArticleSeo(Publishable):
+    article = models.OneToOneField(Article)
+    description = models.CharField(
+        _('description'), max_length=200, null=True, blank=True)
+    keywords = models.CharField(
+        _('keywords'), max_length=100, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'SEO'
+        verbose_name_plural = 'SEO'

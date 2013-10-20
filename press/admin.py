@@ -1,9 +1,16 @@
 from django.contrib import admin
 from django.contrib.admin.options import ModelAdmin
-from publish.admin import PublishableAdmin
+from publish.admin import PublishableAdmin, PublishableTabularInline, PublishableStackedInline
+from publish.admin import Publishable
 from press.forms import ArticleAdminForm
 
-from press.models import Article, Section
+from press.models import Article, Section, ArticleSeo
+
+
+
+
+class ArticleSeoInline(PublishableStackedInline):
+    model = ArticleSeo
 
 
 class ArticleAdmin(PublishableAdmin):
@@ -13,6 +20,14 @@ class ArticleAdmin(PublishableAdmin):
                     'modified_date']
     list_filter = ['section', 'publish_state', 'modified_date', 'created_date']
     search_fields = ['title', 'subtitle']
+    inlines = [
+        ArticleSeoInline
+    ]
+
+    class PublishMeta(Publishable.PublishMeta):
+        publish_reverse_fields = [
+            'articleseo'
+        ]
 
     def save_model(self, request, obj, form, change):
         obj.user = request.user
@@ -25,3 +40,4 @@ class SectionAdmin(ModelAdmin):
 
 admin.site.register(Section, SectionAdmin)
 admin.site.register(Article, ArticleAdmin)
+

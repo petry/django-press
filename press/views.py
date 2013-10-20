@@ -19,9 +19,3 @@ class ArticleView(DetailView):
 
 class SectionView(ListView):
     model = Article
-
-    def get(self, request, *args, **kwargs):
-        return super(SectionView, self).get(request, *args, **kwargs)
-
-    def get_queryset(self):
-        return super(SectionView, self).get_queryset()
