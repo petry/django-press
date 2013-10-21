@@ -1,3 +1,4 @@
 Django>=1.4
 South>=0.7.6
 django-bleach==0.1.4
+django-publish==0.3.9
